@@ -14,7 +14,7 @@ import shutil  #高级文件操作
 
 today = time.strftime("%Y-%m-%d", time.localtime())  #时间转换为YYYY-MM-DD形式
 
-workbook = xlrd.open_workbook('猫咪档案.xlsx')  #打开猫咪档案的表格文档
+workbook = xlrd.open_workbook('猫咪档案0425.xlsx')  #打开猫咪档案的表格文档
 
 data = workbook.sheets()[0]  #建立工作表的一个用于数据操作的副本
 
@@ -64,15 +64,15 @@ labels = [
     [2, '名字', lambda x:'【还没有名字】' if len(x) < 1 else x],
     [3, '是否写入图鉴', lambda x:x],
     [4, '昵称', lambda x:x],
-    [5, '毛色', lambda x:x],
+    #[5, '毛色', lambda x:x],
     [6, '毛序', lambda x: '纯色' if x == 5 else '玳瑁及三花' if x == 4 else '奶牛' if x == 3 else '橘猫及橘白' if x == 2 else '狸花' if x == 1 else x if x == 0 else '' ],
     [8, '性别', lambda x:'公' if x == 1 else '母' if x == 0 else '未知'],
     [9, '状况', lambda x:'不明' if len(x) < 1 else x],
     [10, '绝育情况', lambda x:'已绝育' if x == 1 else '未绝育' if x == 0 else '未知/可能不适宜绝育'],
     [11, '绝育时间', lambda x:str(x)],
-    [12, '出生时间', lambda x:x],
+    [12, '年龄', lambda x:x],
     [13, '外貌', lambda x:x],
-    [14, '性格', lambda x: '亲人可抱' if x == 6 else '亲人不可抱 可摸' if x == 5 else '薛定谔亲人' if x == 4 else '吃东西时可以一直摸' if x == 3 else '吃东西时可以摸一下' if x == 2 else '怕人 安全距离1m以内' if x == 1 else '怕人 安全距离1m以外' if x == 0 else '未知 数据缺失' ],
+    [14, '性格', lambda x:x], #'亲人可抱' if x == 6 else '亲人不可抱 可摸' if x == 5 else '薛定谔亲人' if x == 4 else '吃东西时可以一直摸' if x == 3 else '吃东西时可以摸一下' if x == 2 else '怕人 安全距离1m以内' if x == 1 else '怕人 安全距离1m以外' if x == 0 else '未知 数据缺失' ],
     [15, '第一次被目击时间', lambda x: str(x)],
     [17, '关系', lambda x: str(x)],
     [22, '是否加音频', lambda x:x]
@@ -138,8 +138,8 @@ for line in data_json:  ##遍历data_json这个数据列表的每一行（每一
             if line['是否写入图鉴'] != 0:
                 f.write( '**附录图片**：\n\n')
                 for i in range(int(line['是否写入图鉴'])):  #在表格中的这项，数字代表图片数
-                    f.write('!['+ line['名字'] +'{}'.format(i+1)+'](http://qiniu/img/cats/ '+ line['名字'] +'{}'.format(i+1)+'.m.jpg)    \n')  #将format(i+1)赋到{}的位置 （format：格式化赋值？）下面音频的也差不多
-                    f.write( '[查看原图] (http://qiniu/img/cats/ '+ line['名字'] +'{}'.format(i+1)+'.b.jpg)    \n')
+                    f.write('!['+ line['名字'] +'{}'.format(i+1)+'](http://q9a0pgz83.bkt.clouddn.com/cats/m_'+ line['名字'] +'{}'.format(i+1)+'.jpg)    \n')  #将format(i+1)赋到{}的位置 （format：格式化赋值？）下面音频的也差不多
+                    f.write( '[查看原图](http://q9a0pgz83.bkt.clouddn.com/cats/l_'+ line['名字'] +'{}'.format(i+1)+'.jpg)    \n')
             
             '''
             # 后面的音频数
