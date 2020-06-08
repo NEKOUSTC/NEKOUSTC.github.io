@@ -138,8 +138,8 @@ for line in data_json:  ##遍历data_json这个数据列表的每一行（每一
             if line['是否写入图鉴'] != 0:
                 f.write( '**附录图片**：\n\n')
                 for i in range(int(line['是否写入图鉴'])):  #在表格中的这项，数字代表图片数
-                    f.write('!['+ line['名字'] +'{}'.format(i+1)+'](http://q9a0pgz83.bkt.clouddn.com/cats/m_'+ line['名字'] +'{}'.format(i+1)+'.jpg)    \n')  #将format(i+1)赋到{}的位置 （format：格式化赋值？）下面音频的也差不多
-                    f.write( '[查看原图](http://q9a0pgz83.bkt.clouddn.com/cats/l_'+ line['名字'] +'{}'.format(i+1)+'.jpg)    \n')
+                    f.write('!['+ line['名字'] +'{}'.format(i+1)+'](http://nekoustc.hk.ufileos.com//cats/m_'+ line['名字'] +'{}'.format(i+1)+'.jpg)    \n')  #将format(i+1)赋到{}的位置 （format：格式化赋值？）下面音频的也差不多
+                    f.write( '[查看原图](http://nekoustc.hk.ufileos.com//cats/l_'+ line['名字'] +'{}'.format(i+1)+'.jpg)    \n')
             
             '''
             # 后面的音频数
